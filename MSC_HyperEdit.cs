@@ -3,13 +3,13 @@ using HutongGames.PlayMaker;
 using MSCLoader;
 using UnityEngine;
 
-namespace HyperEdit
+namespace MSC_HyperEdit
 {
-    public class HyperEdit : Mod
+    public class MSC_HyperEdit : Mod
     {
         //Mod info
-        public override string ID => "HyperEdit";
-        public override string Name => "HyperEdit";
+        public override string ID => "MSC_HyperEdit";
+        public override string Name => "MSC_HyperEdit";
         public override string Author => "Sylvrwynd";
         public override string Version => "0.0.1";
 
@@ -34,8 +34,6 @@ namespace HyperEdit
         private bool _getMopedValues;
         private bool _getVanValues;
         private bool _getTractorValues;
-
-        private int count = 0;
 
         //GUIBOX
         private Rect _guiHyperEditBox = new Rect(0f, 0f, 150f, 195f);
@@ -96,7 +94,6 @@ namespace HyperEdit
         // Update is called once per frame
         public override void FixedUpdate()
         {
-            count = count + 1; // increment count
             //Unload Mod
             UnloadMod();
 
@@ -104,11 +101,7 @@ namespace HyperEdit
             GuiToggler();
 
             //IF GUI is open update
-            if (count == 60) // only execute every 60 frames.
-                NewGameLoader();
-
-            if (count >= 60)
-                count = 0;
+            NewGameLoader();
         }
 
         private void UnloadMod()
@@ -181,8 +174,6 @@ namespace HyperEdit
                 GetTractorStatus();
             }
         }
-
-
 
         //Called when mod is loading
         public override void OnGUI()
@@ -257,104 +248,117 @@ namespace HyperEdit
         private void HyperEditLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle partStyle, out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle fluidStyle, out GUIStyle errorStyle, out GUIStyle valueStyle, out GUIStyle gifuStyle, out GUIStyle mopedStyle, out GUIStyle vanStyle, out GUIStyle tractorStyle);
+            GuiStyle( out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
             //Call Window with styles
-            HyperEditGUI(buttonStyle, labelStyle, errorStyle);
+            HyperEditGUI( buttonStyle, labelStyle, errorStyle);
         }
         private void SatsumaPartLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle partStyle, out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle fluidStyle, out GUIStyle errorStyle, out GUIStyle valueStyle, out GUIStyle gifuStyle, out GUIStyle mopedStyle, out GUIStyle vanStyle, out GUIStyle tractorStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
+            SatsumaStyle(out GUIStyle partStyle, out GUIStyle fluidStyle);
             //Call Window with styles
             SatsumaPartGUI(partStyle, errorStyle, labelStyle, valueStyle);
         }
         private void SatsumaPartEditLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle partStyle, out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle fluidStyle, out GUIStyle errorStyle, out GUIStyle valueStyle, out GUIStyle gifuStyle, out GUIStyle mopedStyle, out GUIStyle vanStyle, out GUIStyle tractorStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
+            SatsumaStyle(out GUIStyle partStyle, out GUIStyle fluidStyle);
             //Call Window with styles
             SatsumaPartEditGUI(partStyle, errorStyle, labelStyle, buttonStyle, valueStyle);
         }
         private void SatsumaFluidLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle partStyle, out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle fluidStyle, out GUIStyle errorStyle, out GUIStyle valueStyle, out GUIStyle gifuStyle, out GUIStyle mopedStyle, out GUIStyle vanStyle, out GUIStyle tractorStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
+            SatsumaStyle(out GUIStyle partStyle, out GUIStyle fluidStyle);
             //Call Window with styles
             SatsumaFluidGUI(fluidStyle, errorStyle, labelStyle, valueStyle);
         }
         private void SatsumaFluidEditLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle partStyle, out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle fluidStyle, out GUIStyle errorStyle, out GUIStyle valueStyle, out GUIStyle gifuStyle, out GUIStyle mopedStyle, out GUIStyle vanStyle, out GUIStyle tractorStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
+            SatsumaStyle(out GUIStyle partStyle, out GUIStyle fluidStyle);
             //Call Window with styles
             SatsumaFluidEditGUI(fluidStyle, errorStyle, labelStyle, buttonStyle, valueStyle);
         }
         private void GifuLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle partStyle, out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle fluidStyle, out GUIStyle errorStyle, out GUIStyle valueStyle, out GUIStyle gifuStyle, out GUIStyle mopedStyle, out GUIStyle vanStyle, out GUIStyle tractorStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
+            GifuStyle(out GUIStyle gifuStyle);
             //Call Window with styles
             GifuGUI(gifuStyle, errorStyle, labelStyle, valueStyle);
         }
         private void GifuEditLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle partStyle, out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle fluidStyle, out GUIStyle errorStyle, out GUIStyle valueStyle, out GUIStyle gifuStyle, out GUIStyle mopedStyle, out GUIStyle vanStyle, out GUIStyle tractorStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
+            GifuStyle(out GUIStyle gifuStyle);
             //Call Window with styles
             GifuEditGUI(gifuStyle, errorStyle, labelStyle, valueStyle);
         }
         private void MopedLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle partStyle, out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle fluidStyle, out GUIStyle errorStyle, out GUIStyle valueStyle, out GUIStyle gifuStyle, out GUIStyle mopedStyle, out GUIStyle vanStyle, out GUIStyle tractorStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
+            MopedStyle(out GUIStyle mopedStyle);
             //Call Window with styles
             MopedGUI(mopedStyle, errorStyle, labelStyle, valueStyle);
         }
         private void MopedEditLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle partStyle, out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle fluidStyle, out GUIStyle errorStyle, out GUIStyle valueStyle, out GUIStyle gifuStyle, out GUIStyle mopedStyle, out GUIStyle vanStyle, out GUIStyle tractorStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
+            MopedStyle(out GUIStyle mopedStyle);
             //Call Window with styles
             MopedEditGUI(mopedStyle, errorStyle, labelStyle, valueStyle);
         }
         private void VanLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle partStyle, out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle fluidStyle, out GUIStyle errorStyle, out GUIStyle valueStyle, out GUIStyle gifuStyle, out GUIStyle mopedStyle, out GUIStyle vanStyle, out GUIStyle tractorStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
+            VanStyle(out GUIStyle vanStyle);
             //Call Window with styles
             VanGUI(vanStyle, errorStyle, labelStyle, valueStyle);
         }
         private void VanEditLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle partStyle, out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle fluidStyle, out GUIStyle errorStyle, out GUIStyle valueStyle, out GUIStyle gifuStyle, out GUIStyle mopedStyle, out GUIStyle vanStyle, out GUIStyle tractorStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
+            VanStyle(out GUIStyle vanStyle);
             //Call Window with styles
             VanEditGUI(vanStyle, errorStyle, labelStyle, valueStyle);
         }
         private void TractorLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle partStyle, out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle fluidStyle, out GUIStyle errorStyle, out GUIStyle valueStyle, out GUIStyle gifuStyle, out GUIStyle mopedStyle, out GUIStyle vanStyle, out GUIStyle tractorStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
+            TractorStyle(out GUIStyle tractorStyle);
             //Call Window with styles
             TractorGUI(tractorStyle, errorStyle, labelStyle, valueStyle);
         }
         private void TractorEditLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle partStyle, out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle fluidStyle, out GUIStyle errorStyle, out GUIStyle valueStyle, out GUIStyle gifuStyle, out GUIStyle mopedStyle, out GUIStyle vanStyle, out GUIStyle tractorStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
+            TractorStyle(out GUIStyle tractorStyle);
             //Call Window with styles
             TractorEditGUI(tractorStyle, errorStyle, labelStyle, valueStyle);
         }
 
-        private static void GuiStyle(out GUIStyle partStyle, out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle fluidStyle, out GUIStyle errorStyle, out GUIStyle valueStyle, out GUIStyle gifuStyle, out GUIStyle mopedStyle, out GUIStyle vanStyle, out GUIStyle tractorStyle)
+        /******************************* GUI Styles Functions *************************************/
+        private static void GuiStyle( out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle)
         {
-            //GUI STYLING
             buttonStyle = new GUIStyle(GUI.skin.GetStyle("Button"))
             {
-                fontSize = 11
+                fontSize = 11,
+
             };
             buttonStyle.normal.textColor = Color.white;
-            
+
             errorStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
             {
                 alignment = TextAnchor.MiddleCenter,
@@ -369,6 +373,15 @@ namespace HyperEdit
             };
             labelStyle.normal.textColor = Color.white;
 
+            valueStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
+            {
+                alignment = TextAnchor.UpperRight,
+                fontSize = 10
+            };
+            valueStyle.normal.textColor = Color.white;
+        }
+        private static void SatsumaStyle(out GUIStyle partStyle, out GUIStyle fluidStyle)
+        {
             partStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
             {
                 alignment = TextAnchor.UpperLeft,
@@ -382,35 +395,36 @@ namespace HyperEdit
                 fontSize = 10
             };
             fluidStyle.normal.textColor = Color.yellow;
-
-            valueStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
-            {
-                alignment = TextAnchor.UpperRight,
-                fontSize = 10
-            };
-            valueStyle.normal.textColor = Color.white;
-
+        }
+        private static void GifuStyle( out GUIStyle gifuStyle)
+        {
             gifuStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
             {
                 alignment = TextAnchor.UpperLeft,
                 fontSize = 10
             };
             gifuStyle.normal.textColor = Color.blue;
-
+        }
+        private static void MopedStyle( out GUIStyle mopedStyle)
+        {
             mopedStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
             {
                 alignment = TextAnchor.UpperLeft,
                 fontSize = 10
             };
             mopedStyle.normal.textColor = Color.green;
-
+        }
+        private static void VanStyle( out GUIStyle vanStyle)
+        {
             vanStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
             {
                 alignment = TextAnchor.UpperLeft,
                 fontSize = 10
             };
             vanStyle.normal.textColor = Color.magenta;
-
+        }
+        private static void TractorStyle( out GUIStyle tractorStyle)
+        {
             tractorStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
             {
                 alignment = TextAnchor.UpperLeft,
@@ -509,9 +523,9 @@ namespace HyperEdit
             if (_wearAlternator != null)
             {
                 GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
-                    horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt),_wearAlternator.Value.ToString("#.00"), valueStyle);
-                    horiz = horiz + val + 5;
+                horiz = horiz + lbl + 5;
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearAlternator.Value.ToString("#.00"), valueStyle);
+                horiz = horiz + val + 5;
                 GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
             }
             else
@@ -522,9 +536,9 @@ namespace HyperEdit
             if (_wearCrankshaft != null)
             {
                 GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
-                    horiz = horiz + lbl + 5;
+                horiz = horiz + lbl + 5;
                 GUI.Label(new Rect(horiz, vert, val, hgt), _wearCrankshaft.Value.ToString("#.00"), valueStyle);
-                    horiz = horiz + val + 5;
+                horiz = horiz + val + 5;
                 GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
             }
             else
@@ -640,7 +654,7 @@ namespace HyperEdit
             {
                 GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), (100-_wearFanbelt.Value).ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), (100 - _wearFanbelt.Value).ToString("#.00"), valueStyle);
                 horiz = horiz + val + 5;
                 GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
             }
@@ -861,7 +875,7 @@ namespace HyperEdit
             {
                 _guiSatsumaFluidShow = false;
             }
-            if (GUI.Button(new Rect(170,0,20,20), ">",errorStyle))
+            if (GUI.Button(new Rect(170, 0, 20, 20), ">", errorStyle))
             {
                 _guiSatsumaFluidShow = false;
                 _guiSatsumaFluidEditShow = true;
@@ -1466,13 +1480,13 @@ namespace HyperEdit
         {
             var satsuma = GameObject.Find("SATSUMA(557kg, 248)");
             foreach (var fsm in satsuma.GetComponentsInChildren<PlayMakerFSM>())
-            foreach (var floats in fsm.FsmVariables.FloatVariables)
-                if (floats.Name == "WearAlternator" || floats.Name == "WearCrankshaft" ||
-                    floats.Name == "WearGearbox" || floats.Name == "WearHeadgasket"
-                    || floats.Name == "WearPiston1" || floats.Name == "WearPiston2" || floats.Name == "WearPiston3"
-                    || floats.Name == "WearPiston4" || floats.Name == "WearRockershaft" ||
-                    floats.Name == "WearStarter" || floats.Name == "WearWaterpump")
-                    floats.Value = 100f;
+                foreach (var floats in fsm.FsmVariables.FloatVariables)
+                    if (floats.Name == "WearAlternator" || floats.Name == "WearCrankshaft" ||
+                        floats.Name == "WearGearbox" || floats.Name == "WearHeadgasket"
+                        || floats.Name == "WearPiston1" || floats.Name == "WearPiston2" || floats.Name == "WearPiston3"
+                        || floats.Name == "WearPiston4" || floats.Name == "WearRockershaft" ||
+                        floats.Name == "WearStarter" || floats.Name == "WearWaterpump")
+                        floats.Value = 100f;
 
             if (_wearFanbelt != null)
                 _wearFanbelt.Value = 0;
@@ -1517,6 +1531,39 @@ namespace HyperEdit
             }
         }
         private void GetSatsumaFluidStatus()
+        {
+            if (!_getSatsumaFluidValues)
+            {
+                if (GameObject.Find("SATSUMA(557kg, 248)") != null)
+                {
+                    foreach (var fsm in Resources.FindObjectsOfTypeAll<PlayMakerFSM>())
+                    {
+                        var fsmfloat = new Func<string, FsmFloat>(fsm.FsmVariables.FindFsmFloat);
+
+                        if (fsm.gameObject.transform.root.name == "Database")
+                        {
+                            if (fsm.gameObject.name == "FuelTank")
+                                _satsumaFuel = fsm.FsmVariables.FindFsmFloat("FuelLevel");
+                            if (fsm.gameObject.name == "Oilpan")
+                                _oilLevel = fsm.FsmVariables.FindFsmFloat("Oil");
+                            if (fsm.gameObject.name == "Racing Radiator")
+                                _racingCoolant = fsm.FsmVariables.FindFsmFloat("Water");
+                            if (fsm.gameObject.name == "Radiator")
+                                _regularCoolant = fsm.FsmVariables.FindFsmFloat("Water");
+                            if (fsm.gameObject.name == "BrakeMasterCylinder")
+                            {
+                                _brakeFluidF = fsm.FsmVariables.FindFsmFloat("BrakeFluidF");
+                                _brakeFluidR = fsm.FsmVariables.FindFsmFloat("BrakeFluidR");
+                            }
+                            if (fsm.gameObject.name == "ClutchMasterCylinder")
+                                _clutchFluid = fsm.FsmVariables.FindFsmFloat("ClutchFluid");
+                        }
+                    }
+                    _getSatsumaFluidValues = true;
+                }
+            }
+        }
+        private void GetSatsumaTuning()
         {
             if (!_getSatsumaFluidValues)
             {

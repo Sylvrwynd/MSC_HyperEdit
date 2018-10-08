@@ -7,8 +7,8 @@
     <ProjectGuid>{2CEAE666-CBA5-4FA6-AEE3-D6C5CFB2DE20}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HyperEdit</RootNamespace>
-    <AssemblyName>HyperEdit</AssemblyName>
+    <RootNamespace>MSC_HyperEdit</RootNamespace>
+    <AssemblyName>MSC_HyperEdit</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
@@ -56,7 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HyperEdit.cs" />
+    <Compile Include="MSC_HyperEdit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
