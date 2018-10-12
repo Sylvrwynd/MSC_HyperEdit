@@ -35,7 +35,7 @@ namespace HyperEdit
         private bool _getVanValues;
         private bool _getTractorValues;
 
-        private int count = 0;
+        private bool _mouseFree;
 
         //GUIBOX
         private Rect _guiHyperEditBox = new Rect(0f, 0f, 150f, 195f);
@@ -53,8 +53,8 @@ namespace HyperEdit
         private Rect _guiTractorEditBox = new Rect(Screen.width - 350f, 0f, 350f, 45f);
 
         // Keybinds
-        private readonly Keybind _showHyperEditGui =
-            new Keybind("HyperEditGuiKey", "HyperEdit GUI", KeyCode.H, KeyCode.LeftAlt);
+        private readonly Keybind _showHyperEditGui = new Keybind("HyperEditGuiKey", "HyperEdit GUI", KeyCode.H, KeyCode.LeftAlt);
+        private readonly Keybind _releaseMouse = new Keybind("ReleaseMouseKey", "Release Mouse", KeyCode.M, KeyCode.RightAlt);
 
         //Satsuma floats
         private FsmFloat _wearAlternator;
@@ -91,7 +91,10 @@ namespace HyperEdit
         public override void OnLoad()
         {
             Keybind.Add(this, _showHyperEditGui);
+            Keybind.Add(this, _releaseMouse);
         }
+
+ 
 
         // Update is called once per frame
         public override void FixedUpdate()
@@ -104,11 +107,7 @@ namespace HyperEdit
             GuiToggler();
 
             //IF GUI is open update
-            if (count == 60) // only execute every 60 frames.
-                NewGameLoader();
-
-            if (count >= 60)
-                count = 0;
+            NewGameLoader();
         }
 
         private void UnloadMod()
@@ -121,8 +120,12 @@ namespace HyperEdit
                 _getMopedValues = false;
                 _getVanValues = false;
                 _getTractorValues = false;
+                // Release mouse to default application control
+                _mouseFree = false;
+                FsmVariables.GlobalVariables.FindFsmBool("PlayerInMenu").Value = false;
             }
         }
+
         private void GuiToggler()
         {
             if (_showHyperEditGui.IsDown())
@@ -130,6 +133,25 @@ namespace HyperEdit
                 _guiHyperEditShow = !_guiHyperEditShow;
             }
         }
+
+        private void MouseToggle()
+        {
+            if (_releaseMouse.IsDown())
+            {
+                if (!_mouseFree)
+                {
+                    FsmVariables.GlobalVariables.FindFsmBool("PlayerInMenu").Value = true;
+                    _mouseFree = true;
+                }
+                else
+                {
+                    FsmVariables.GlobalVariables.FindFsmBool("PlayerInMenu").Value = false;
+                    _mouseFree = false;
+                }
+            }
+        }
+
+
         private void NewGameLoader()
         {
             if (Application.loadedLevel == 3 && _guiSatsumaPartShow)
