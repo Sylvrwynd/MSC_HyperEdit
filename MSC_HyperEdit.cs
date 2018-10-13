@@ -35,11 +35,8 @@ namespace MSC_HyperEdit
         private bool _getVanValues;
         private bool _getTractorValues;
 
-<<<<<<< HEAD:MSC_HyperEdit.cs
-=======
         private bool _mouseFree;
 
->>>>>>> 220bd5c3303dbaeb3838eb43cd555e8d4cb08803:HyperEdit.cs
         //GUIBOX
         private Rect _guiHyperEditBox = new Rect(0f, 0f, 150f, 195f);
         private Rect _guiSatsumaPartBox = new Rect(200f, 0f, 190f, 240f);
