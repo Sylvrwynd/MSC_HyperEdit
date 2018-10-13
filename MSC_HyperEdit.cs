@@ -56,9 +56,7 @@ namespace MSC_HyperEdit
         private Rect _guiTractorEditBox = new Rect(Screen.width - 350f, 0f, 350f, 45f);
 
         // Keybinds
-        private readonly Keybind _showHyperEditGui =
-            new Keybind("HyperEditGuiKey", "HyperEdit GUI", KeyCode.H, KeyCode.LeftAlt);
-        private readonly Keybind _showHyperEditGui = new Keybind("HyperEditGuiKey", "HyperEdit GUI", KeyCode.H, KeyCode.LeftAlt);
+        private readonly Keybind _showHyperEditGui = new Keybind("HyperEditGuiKey", "HyperEdit GUI", KeyCode.G, KeyCode.LeftAlt);
         private readonly Keybind _releaseMouse = new Keybind("ReleaseMouseKey", "Release Mouse", KeyCode.M, KeyCode.RightAlt);
 
         //Satsuma floats
@@ -99,8 +97,6 @@ namespace MSC_HyperEdit
             Keybind.Add(this, _releaseMouse);
         }
 
- 
-
         // Update is called once per frame
         public override void FixedUpdate()
         {
@@ -112,6 +108,9 @@ namespace MSC_HyperEdit
 
             //IF GUI is open update
             NewGameLoader();
+
+            // Mouse Release
+            MouseToggle();
         }
 
         private void UnloadMod()
@@ -281,114 +280,102 @@ namespace MSC_HyperEdit
         private void HyperEditLayout(int id)
         {
             //GuiStyle List
-            GuiStyle( out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
+            GuiStyle( out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle textStyle);
             //Call Window with styles
             HyperEditGUI( buttonStyle, labelStyle, errorStyle);
         }
         private void SatsumaPartLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
-            SatsumaStyle(out GUIStyle partStyle, out GUIStyle fluidStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle textStyle);
             //Call Window with styles
-            SatsumaPartGUI(partStyle, errorStyle, labelStyle, valueStyle);
+            SatsumaPartGUI(buttonStyle, errorStyle, labelStyle, textStyle);
         }
         private void SatsumaPartEditLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
-            SatsumaStyle(out GUIStyle partStyle, out GUIStyle fluidStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle textStyle);
             //Call Window with styles
-            SatsumaPartEditGUI(partStyle, errorStyle, labelStyle, buttonStyle, valueStyle);
+            SatsumaPartEditGUI(buttonStyle, errorStyle, labelStyle, textStyle);
         }
         private void SatsumaFluidLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
-            SatsumaStyle(out GUIStyle partStyle, out GUIStyle fluidStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle textStyle);
             //Call Window with styles
-            SatsumaFluidGUI(fluidStyle, errorStyle, labelStyle, valueStyle);
+            SatsumaFluidGUI(buttonStyle, errorStyle, labelStyle, textStyle);
         }
         private void SatsumaFluidEditLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
-            SatsumaStyle(out GUIStyle partStyle, out GUIStyle fluidStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle textStyle);
             //Call Window with styles
-            SatsumaFluidEditGUI(fluidStyle, errorStyle, labelStyle, buttonStyle, valueStyle);
+            SatsumaFluidEditGUI(buttonStyle, errorStyle, labelStyle, textStyle);
         }
         private void GifuLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
-            GifuStyle(out GUIStyle gifuStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle textStyle);
             //Call Window with styles
-            GifuGUI(gifuStyle, errorStyle, labelStyle, valueStyle);
+            GifuGUI(buttonStyle, errorStyle, labelStyle, textStyle);
         }
         private void GifuEditLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
-            GifuStyle(out GUIStyle gifuStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle textStyle);
             //Call Window with styles
-            GifuEditGUI(gifuStyle, errorStyle, labelStyle, valueStyle);
+            GifuEditGUI(buttonStyle, errorStyle, labelStyle, textStyle);
         }
         private void MopedLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
-            MopedStyle(out GUIStyle mopedStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle textStyle);
             //Call Window with styles
-            MopedGUI(mopedStyle, errorStyle, labelStyle, valueStyle);
+            MopedGUI(buttonStyle, errorStyle, labelStyle, textStyle);
         }
         private void MopedEditLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
-            MopedStyle(out GUIStyle mopedStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle textStyle);
             //Call Window with styles
-            MopedEditGUI(mopedStyle, errorStyle, labelStyle, valueStyle);
+            MopedEditGUI(buttonStyle, errorStyle, labelStyle, textStyle);
         }
         private void VanLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
-            VanStyle(out GUIStyle vanStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle textStyle);
             //Call Window with styles
-            VanGUI(vanStyle, errorStyle, labelStyle, valueStyle);
+            VanGUI(buttonStyle, errorStyle, labelStyle, textStyle);
         }
         private void VanEditLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
-            VanStyle(out GUIStyle vanStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle textStyle);
             //Call Window with styles
-            VanEditGUI(vanStyle, errorStyle, labelStyle, valueStyle);
+            VanEditGUI(buttonStyle, errorStyle, labelStyle, textStyle);
         }
         private void TractorLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
-            TractorStyle(out GUIStyle tractorStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle textStyle);
             //Call Window with styles
-            TractorGUI(tractorStyle, errorStyle, labelStyle, valueStyle);
+            TractorGUI(buttonStyle, errorStyle, labelStyle, textStyle);
         }
         private void TractorEditLayout(int id)
         {
             //GuiStyle List
-            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle);
-            TractorStyle(out GUIStyle tractorStyle);
+            GuiStyle(out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle textStyle);
             //Call Window with styles
-            TractorEditGUI(tractorStyle, errorStyle, labelStyle, valueStyle);
+            TractorEditGUI(buttonStyle, errorStyle, labelStyle, textStyle);
         }
 
         /******************************* GUI Styles Functions *************************************/
-        private static void GuiStyle( out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle valueStyle)
+        private static void GuiStyle( out GUIStyle buttonStyle, out GUIStyle labelStyle, out GUIStyle errorStyle, out GUIStyle textStyle)
         {
             buttonStyle = new GUIStyle(GUI.skin.GetStyle("Button"))
             {
-                fontSize = 11,
-
+                alignment = TextAnchor.MiddleCenter,
+                fontSize = 11
             };
             buttonStyle.normal.textColor = Color.white;
 
@@ -406,68 +393,14 @@ namespace MSC_HyperEdit
             };
             labelStyle.normal.textColor = Color.white;
 
-            valueStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
+            textStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
             {
                 alignment = TextAnchor.UpperRight,
                 fontSize = 10
             };
-            valueStyle.normal.textColor = Color.white;
+            textStyle.normal.textColor = Color.white;
         }
-        private static void SatsumaStyle(out GUIStyle partStyle, out GUIStyle fluidStyle)
-        {
-            partStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
-            {
-                alignment = TextAnchor.UpperLeft,
-                fontSize = 10
-            };
-            partStyle.normal.textColor = Color.cyan;
-
-            fluidStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
-            {
-                alignment = TextAnchor.UpperLeft,
-                fontSize = 10
-            };
-            fluidStyle.normal.textColor = Color.yellow;
-        }
-        private static void GifuStyle( out GUIStyle gifuStyle)
-        {
-            gifuStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
-            {
-                alignment = TextAnchor.UpperLeft,
-                fontSize = 10
-            };
-            gifuStyle.normal.textColor = Color.blue;
-        }
-        private static void MopedStyle( out GUIStyle mopedStyle)
-        {
-            mopedStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
-            {
-                alignment = TextAnchor.UpperLeft,
-                fontSize = 10
-            };
-            mopedStyle.normal.textColor = Color.green;
-        }
-        private static void VanStyle( out GUIStyle vanStyle)
-        {
-            vanStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
-            {
-                alignment = TextAnchor.UpperLeft,
-                fontSize = 10
-            };
-            vanStyle.normal.textColor = Color.magenta;
-        }
-        private static void TractorStyle( out GUIStyle tractorStyle)
-        {
-            tractorStyle = new GUIStyle(GUI.skin.GetStyle("Normal"))
-            {
-                alignment = TextAnchor.UpperLeft,
-                fontSize = 10
-            };
-            tractorStyle.normal.textColor = Color.gray;
-        }
-
         /*********************************** GUI WINDOWS ******************************************/
-
         private void HyperEditGUI(GUIStyle buttonStyle, GUIStyle labelStyle, GUIStyle errorStyle)
         {
             var horiz = 5; // starting horizontal position
@@ -529,7 +462,7 @@ namespace MSC_HyperEdit
             }
             GUI.DragWindow(new Rect(0, 0, 10000, 10000));
         }
-        private void SatsumaPartGUI(GUIStyle partStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle valueStyle)
+        private void SatsumaPartGUI(GUIStyle buttonStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle textStyle)
         {
             var PartName = "";
             var horiz = 5; // starting horizontal position
@@ -555,11 +488,11 @@ namespace MSC_HyperEdit
             PartName = "Alternator";
             if (_wearAlternator != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearAlternator.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearAlternator.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -568,11 +501,11 @@ namespace MSC_HyperEdit
             PartName = "Crankshaft";
             if (_wearCrankshaft != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearCrankshaft.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearCrankshaft.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -581,11 +514,11 @@ namespace MSC_HyperEdit
             PartName = "Head Gasket";
             if (_wearHeadgasket != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearHeadgasket.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearHeadgasket.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -594,11 +527,11 @@ namespace MSC_HyperEdit
             PartName = "Piston 1";
             if (_wearPiston1 != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston1.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston1.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -607,11 +540,11 @@ namespace MSC_HyperEdit
             PartName = "Piston 2";
             if (_wearPiston2 != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston2.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston2.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -620,11 +553,11 @@ namespace MSC_HyperEdit
             PartName = "Piston 3";
             if (_wearPiston3 != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston3.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston3.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -633,11 +566,11 @@ namespace MSC_HyperEdit
             PartName = "Piston 4";
             if (_wearPiston4 != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston4.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston4.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -646,11 +579,11 @@ namespace MSC_HyperEdit
             PartName = "Rockers";
             if (_wearRockershaft != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearRockershaft.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearRockershaft.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -659,11 +592,11 @@ namespace MSC_HyperEdit
             PartName = "Starter";
             if (_wearStarter != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearStarter.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearStarter.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -672,11 +605,11 @@ namespace MSC_HyperEdit
             PartName = "Water Pump";
             if (_wearWaterpump != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearWaterpump.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearWaterpump.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -685,17 +618,17 @@ namespace MSC_HyperEdit
             PartName = "Belt";
             if (_wearFanbelt != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), (100 - _wearFanbelt.Value).ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), (100 - _wearFanbelt.Value).ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
             GUI.DragWindow(new Rect(0, 0, 10000, 10000));
         }
-        private void SatsumaPartEditGUI(GUIStyle partStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle buttonStyle, GUIStyle valueStyle)
+        private void SatsumaPartEditGUI(GUIStyle buttonStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle textStyle)
         {
             var PartName = "";
             var horiz = 5; // starting horizontal position
@@ -723,11 +656,11 @@ namespace MSC_HyperEdit
             PartName = "Alternator";
             if (_wearAlternator != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearAlternator.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearAlternator.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
                 horiz = horiz + typ + 5;
                 _wearAlternator.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _wearAlternator.Value, 0.0F, 100.0F);
             }
@@ -738,11 +671,11 @@ namespace MSC_HyperEdit
             PartName = "Crankshaft";
             if (_wearCrankshaft != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearCrankshaft.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearCrankshaft.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
                 horiz = horiz + typ + 5;
                 _wearCrankshaft.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _wearCrankshaft.Value, 0.0F, 100.0F);
             }
@@ -753,11 +686,11 @@ namespace MSC_HyperEdit
             PartName = "Head Gasket";
             if (_wearHeadgasket != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearHeadgasket.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearHeadgasket.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
                 horiz = horiz + typ + 5;
                 _wearHeadgasket.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _wearHeadgasket.Value, 0.0F, 100.0F);
             }
@@ -768,11 +701,11 @@ namespace MSC_HyperEdit
             PartName = "Piston 1";
             if (_wearPiston1 != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston1.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston1.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
                 horiz = horiz + typ + 5;
                 _wearPiston1.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _wearPiston1.Value, 0.0F, 100.0F);
             }
@@ -783,11 +716,11 @@ namespace MSC_HyperEdit
             PartName = "Piston 2";
             if (_wearPiston2 != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston2.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston2.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
                 horiz = horiz + typ + 5;
                 _wearPiston2.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _wearPiston2.Value, 0.0F, 100.0F);
             }
@@ -798,11 +731,11 @@ namespace MSC_HyperEdit
             PartName = "Piston 3";
             if (_wearPiston3 != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston3.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston3.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
                 horiz = horiz + typ + 5;
                 _wearPiston3.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _wearPiston3.Value, 0.0F, 100.0F);
             }
@@ -813,11 +746,11 @@ namespace MSC_HyperEdit
             PartName = "Piston 4";
             if (_wearPiston4 != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston4.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearPiston4.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
                 horiz = horiz + typ + 5;
                 _wearPiston4.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _wearPiston4.Value, 0.0F, 100.0F);
             }
@@ -828,11 +761,11 @@ namespace MSC_HyperEdit
             PartName = "Rockers";
             if (_wearRockershaft != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearRockershaft.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearRockershaft.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
                 horiz = horiz + typ + 5;
                 _wearRockershaft.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _wearRockershaft.Value, 0.0F, 100.0F);
             }
@@ -843,11 +776,11 @@ namespace MSC_HyperEdit
             PartName = "Starter";
             if (_wearStarter != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearStarter.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearStarter.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
                 horiz = horiz + typ + 5;
                 _wearStarter.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _wearStarter.Value, 0.0F, 100.0F);
             }
@@ -858,11 +791,11 @@ namespace MSC_HyperEdit
             PartName = "Water Pump";
             if (_wearWaterpump != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _wearWaterpump.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _wearWaterpump.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
                 horiz = horiz + typ + 5;
                 _wearWaterpump.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _wearWaterpump.Value, 0.0F, 100.0F);
             }
@@ -873,11 +806,11 @@ namespace MSC_HyperEdit
             PartName = "Belt";
             if (_wearFanbelt != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", partStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Condition: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), (100 - _wearFanbelt.Value).ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), (100 - _wearFanbelt.Value).ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "%", textStyle);
                 horiz = horiz + typ + 5;
                 _wearFanbelt.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _wearFanbelt.Value, 100.0F, 0.0F);
             }
@@ -892,7 +825,7 @@ namespace MSC_HyperEdit
                 FixSatsumaParts();
             GUI.DragWindow(new Rect(0, 0, 10000, 10000));
         }
-        private void SatsumaFluidGUI(GUIStyle fluidStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle valueStyle)
+        private void SatsumaFluidGUI(GUIStyle buttonStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle textStyle)
         {
             var PartName = "";
             var horiz = 5; // starting horizontal position
@@ -917,11 +850,11 @@ namespace MSC_HyperEdit
             PartName = "Oil";
             if (_oilLevel != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", fluidStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _oilLevel.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _oilLevel.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -930,19 +863,19 @@ namespace MSC_HyperEdit
             PartName = "Coolant";
             if (_regularCoolant != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", fluidStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _racingCoolant.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _racingCoolant.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
             }
             else if (_racingCoolant != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", fluidStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _racingCoolant.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _racingCoolant.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -951,11 +884,11 @@ namespace MSC_HyperEdit
             PartName = "Front Brake Fluid";
             if (_brakeFluidF != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", fluidStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _brakeFluidF.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _brakeFluidF.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -964,11 +897,11 @@ namespace MSC_HyperEdit
             PartName = "Rear Brake Fluid";
             if (_brakeFluidR != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", fluidStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _brakeFluidR.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _brakeFluidR.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -977,11 +910,11 @@ namespace MSC_HyperEdit
             PartName = "Clutch Fluid";
             if (_clutchFluid != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", fluidStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _clutchFluid.Value.ToString("0.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _clutchFluid.Value.ToString("0.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -990,17 +923,17 @@ namespace MSC_HyperEdit
             PartName = "Fuel";
             if (_satsumaFuel != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", fluidStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _satsumaFuel.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _satsumaFuel.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
             GUI.DragWindow(new Rect(0, 0, 10000, 10000));
         }
-        private void SatsumaFluidEditGUI(GUIStyle fluidStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle buttonStyle, GUIStyle valueStyle)
+        private void SatsumaFluidEditGUI(GUIStyle buttonStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle textStyle)
         {
             var PartName = "";
             var horiz = 5; // starting horizontal position
@@ -1027,11 +960,11 @@ namespace MSC_HyperEdit
             PartName = "Oil";
             if (_oilLevel != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", fluidStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _oilLevel.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _oilLevel.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
                 horiz = horiz + typ + 5;
                 _oilLevel.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _oilLevel.Value, 0.0F, 3.0F);
             }
@@ -1042,21 +975,21 @@ namespace MSC_HyperEdit
             PartName = "Coolant";
             if (_regularCoolant != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", fluidStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _regularCoolant.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _regularCoolant.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
                 horiz = horiz + typ + 5;
                 _regularCoolant.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _regularCoolant.Value, 0.0F, 5.4F);
             }
             else if (_racingCoolant != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", fluidStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _racingCoolant.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _racingCoolant.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
                 horiz = horiz + typ + 5;
                 _racingCoolant.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _racingCoolant.Value, 0.0F, 7.0F);
             }
@@ -1067,11 +1000,11 @@ namespace MSC_HyperEdit
             PartName = "Front Brake Fluid";
             if (_brakeFluidF != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", fluidStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _brakeFluidF.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _brakeFluidF.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
                 horiz = horiz + typ + 5;
                 _brakeFluidF.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _brakeFluidF.Value, 0.0F, 1.0F);
             }
@@ -1082,11 +1015,11 @@ namespace MSC_HyperEdit
             PartName = "Rear Brake Fluid";
             if (_brakeFluidR != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", fluidStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _brakeFluidR.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _brakeFluidR.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
                 horiz = horiz + typ + 5;
                 _brakeFluidR.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _brakeFluidR.Value, 0.0F, 1.0F);
             }
@@ -1097,11 +1030,11 @@ namespace MSC_HyperEdit
             PartName = "Clutch Fluid";
             if (_clutchFluid != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", fluidStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _clutchFluid.Value.ToString("0.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _clutchFluid.Value.ToString("0.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
                 horiz = horiz + typ + 5;
                 _clutchFluid.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _clutchFluid.Value, 0.0F, 0.5F);
             }
@@ -1112,11 +1045,11 @@ namespace MSC_HyperEdit
             PartName = "Fuel";
             if (_satsumaFuel != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", fluidStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _satsumaFuel.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _satsumaFuel.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
                 horiz = horiz + typ + 5;
                 _satsumaFuel.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _satsumaFuel.Value, 0.0F, 36.0F);
             }
@@ -1132,7 +1065,7 @@ namespace MSC_HyperEdit
                 FillSatsumaFluids();
             GUI.DragWindow(new Rect(0, 0, 10000, 10000));
         }
-        private void GifuGUI(GUIStyle gifuStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle valueStyle)
+        private void GifuGUI(GUIStyle buttonStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle textStyle)
         {
             var PartName = "";
             var horiz = 5; // starting horizontal position
@@ -1157,11 +1090,11 @@ namespace MSC_HyperEdit
             PartName = "Fuel";
             if (_gifuFuel != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", gifuStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _gifuFuel.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _gifuFuel.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -1170,11 +1103,11 @@ namespace MSC_HyperEdit
             PartName = "Fuel Oil";
             if (_gifuFuelOil != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", gifuStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _gifuFuelOil.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _gifuFuelOil.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
@@ -1183,17 +1116,17 @@ namespace MSC_HyperEdit
             PartName = "Human Waste";
             if (_gifuWaste != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", gifuStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _gifuWaste.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _gifuWaste.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
             GUI.DragWindow(new Rect(0, 0, 10000, 10000));
         }
-        private void GifuEditGUI(GUIStyle gifuStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle valueStyle)
+        private void GifuEditGUI(GUIStyle buttonStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle textStyle)
         {
             var PartName = "";
             var horiz = 5; // starting horizontal position
@@ -1219,11 +1152,11 @@ namespace MSC_HyperEdit
             PartName = "Fuel";
             if (_gifuFuel != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", gifuStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _gifuFuel.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _gifuFuel.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
                 horiz = horiz + typ + 5;
                 _gifuFuel.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _gifuFuel.Value, 0.0F, 300.0F);
                 if (_gifuFuel.Value + _gifuFuelOil.Value > 300)
@@ -1238,11 +1171,11 @@ namespace MSC_HyperEdit
             PartName = "Fuel Oil";
             if (_gifuFuelOil != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", gifuStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _gifuFuelOil.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _gifuFuelOil.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
                 horiz = horiz + typ + 5;
                 _gifuFuelOil.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _gifuFuelOil.Value, 0.0F, 300.0F);
                 if (_gifuFuel.Value + _gifuFuelOil.Value > 300)
@@ -1257,11 +1190,11 @@ namespace MSC_HyperEdit
             PartName = "Human Waste";
             if (_gifuWaste != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", gifuStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _gifuWaste.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _gifuWaste.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
                 horiz = horiz + typ + 5;
                 _gifuWaste.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _gifuWaste.Value, 0.0F, 10000.0F);
             }
@@ -1270,7 +1203,7 @@ namespace MSC_HyperEdit
 
             GUI.DragWindow(new Rect(0, 0, 10000, 10000));
         }
-        private void MopedGUI(GUIStyle mopedStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle valueStyle)
+        private void MopedGUI(GUIStyle buttonStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle textStyle)
         {
             var PartName = "";
             var horiz = 5; // starting horizontal position
@@ -1295,17 +1228,17 @@ namespace MSC_HyperEdit
             PartName = "Fuel";
             if (_mopedFuel != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", mopedStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _mopedFuel.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _mopedFuel.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
             GUI.DragWindow(new Rect(0, 0, 10000, 10000));
         }
-        private void MopedEditGUI(GUIStyle mopedStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle valueStyle)
+        private void MopedEditGUI(GUIStyle buttonStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle textStyle)
         {
             var PartName = "";
             var horiz = 5; // starting horizontal position
@@ -1331,11 +1264,11 @@ namespace MSC_HyperEdit
             PartName = "Fuel";
             if (_mopedFuel != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", mopedStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _mopedFuel.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _mopedFuel.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
                 horiz = horiz + typ + 5;
                 _mopedFuel.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _mopedFuel.Value, 0.0F, 3.4F);
             }
@@ -1343,7 +1276,7 @@ namespace MSC_HyperEdit
                 GUI.Label(new Rect(horiz, vert, 350, hgt), "Error: " + PartName + " Not found.", errorStyle);
             GUI.DragWindow(new Rect(0, 0, 10000, 10000));
         }
-        private void VanGUI(GUIStyle vanStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle valueStyle)
+        private void VanGUI(GUIStyle buttonStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle textStyle)
         {
             var PartName = "";
             var horiz = 5; // starting horizontal position
@@ -1368,17 +1301,17 @@ namespace MSC_HyperEdit
             PartName = "Fuel";
             if (_vanFuel != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", vanStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _vanFuel.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _vanFuel.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
             GUI.DragWindow(new Rect(0, 0, 10000, 10000));
         }
-        private void VanEditGUI(GUIStyle vanStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle valueStyle)
+        private void VanEditGUI(GUIStyle buttonStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle textStyle)
         {
             var PartName = "";
             var horiz = 5; // starting horizontal position
@@ -1404,11 +1337,11 @@ namespace MSC_HyperEdit
             PartName = "Fuel";
             if (_vanFuel != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", vanStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _vanFuel.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _vanFuel.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
                 horiz = horiz + typ + 5;
                 _vanFuel.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _vanFuel.Value, 0.0F, 40.0F);
             }
@@ -1416,7 +1349,7 @@ namespace MSC_HyperEdit
                 GUI.Label(new Rect(horiz, vert, 350, hgt), "Error: " + PartName + " Not found.", errorStyle);
             GUI.DragWindow(new Rect(0, 0, 10000, 10000));
         }
-        private void TractorGUI(GUIStyle tractorStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle valueStyle)
+        private void TractorGUI(GUIStyle buttonStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle textStyle)
         {
             var PartName = "";
             var horiz = 5; // starting horizontal position
@@ -1441,17 +1374,17 @@ namespace MSC_HyperEdit
             PartName = "Fuel";
             if (_tractorFuel != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", tractorStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _tractorFuel.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _tractorFuel.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
             }
             else
                 GUI.Label(new Rect(horiz, vert, 190, hgt), "Error: " + PartName + " Not found.", errorStyle);
             GUI.DragWindow(new Rect(0, 0, 10000, 10000));
         }
-        private void TractorEditGUI(GUIStyle tractorStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle valueStyle)
+        private void TractorEditGUI(GUIStyle buttonStyle, GUIStyle errorStyle, GUIStyle labelStyle, GUIStyle textStyle)
         {
             var PartName = "";
             var horiz = 5; // starting horizontal position
@@ -1477,11 +1410,11 @@ namespace MSC_HyperEdit
             PartName = "Fuel";
             if (_tractorFuel != null)
             {
-                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", tractorStyle);
+                GUI.Label(new Rect(horiz, vert, lbl, hgt), PartName + " Level: ", textStyle);
                 horiz = horiz + lbl + 5;
-                GUI.Label(new Rect(horiz, vert, val, hgt), _tractorFuel.Value.ToString("#.00"), valueStyle);
+                GUI.Label(new Rect(horiz, vert, val, hgt), _tractorFuel.Value.ToString("#.00"), textStyle);
                 horiz = horiz + val + 5;
-                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", valueStyle);
+                GUI.Label(new Rect(horiz, vert, typ, hgt), "L", textStyle);
                 horiz = horiz + typ + 5;
                 _tractorFuel.Value = GUI.HorizontalSlider(new Rect(horiz, vert, slid, hgt), _tractorFuel.Value, 0.0F, 65.0F);
             }
@@ -1489,9 +1422,7 @@ namespace MSC_HyperEdit
                 GUI.Label(new Rect(horiz, vert, 350, hgt), "Error: " + PartName + " Not found.", errorStyle);
             GUI.DragWindow(new Rect(0, 0, 10000, 10000));
         }
-
         /*********************************** VALUE FUNCTIONS **************************************/
-
         private void FillSatsumaFluids()
         {
             if (_satsumaFuel != null)
